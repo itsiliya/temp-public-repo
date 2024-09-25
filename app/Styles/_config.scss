@@ -1,0 +1,189 @@
+@font-face {
+    font-family: "IranYekan";
+    src: url("/Fonts/IranYekan/woff2/IRANYekanXFaNum-Bold.woff2") format("woff2"), url("/Fonts/IranYekan/woff/IRANYekanXFaNum-Bold.woff") format("woff");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "IranYekan";
+    src: url("/Fonts/IranYekan/woff2/IRANYekanXFaNum-Medium.woff2") format("woff2"), url("/Fonts/IranYekan/woff/IRANYekanXFaNum-Medium.woff") format("woff");
+    font-style: normal;
+}
+@font-face {
+    font-family: "IranYekan";
+    src: url("/Fonts/IranYekan/woff2/IRANYekanXFaNum-Regular.woff2") format("woff2"), url("/Fonts/IranYekan/woff/IRANYekanXFaNum-Regular.woff") format("woff");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "IranYekan";
+    src: url("/Fonts/IranYekan/woff2/IRANYekanXFaNum-Thin.woff2") format("woff2"), url("/Fonts/IranYekan/woff/IRANYekanXFaNum-Thin.woff") format("woff");
+    font-weight: 300;
+}
+
+/*
+    xs, extra-small: 0px
+    sm, small: 600px
+    md, medium: 900px
+    lg, large: 1200px
+    xl, extra-large: 1536px
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit !important;
+}
+
+$font: IranYekan, "Roboto", "Helvetica", "Arial", sans-serif !important;
+
+$white: #fff;
+
+$bodyBg: #f6f8fa;
+$bodyContrastColor: #434d58;
+
+$borderColor: #d1d9e0;
+
+$fontColor: #272829;
+$brightFontColor: #798089;
+
+$primary: #2196f3;
+$accent: #fd8c73;
+
+$menuIconColor: #59636e;
+$menuTextColor: $bodyContrastColor;
+
+@function setFont($size:"regular") {
+    @if $size == "regular" {
+        @return 1.125rem;
+    } @else if $size == "sm-regular" {
+        @return 1rem;
+    } @else if $size == "small" {
+        @return 0.875rem;
+    } @else if $size == "lg-regular" {
+        @return 1.25rem;
+    } @else if $size == "large" {
+        @return 1.5rem;
+    } @else if $size == "tiny" {
+        @return .75rem;
+    }
+}
+
+@function getTransitionTime($speed: "middle") {
+    @if $speed == "fast" {
+        @return .2s;
+    } @else if $speed == "middle" {
+        @return .5s;
+    } @else if $speed == "slow" {
+        @return .7s;
+    }
+}
+
+@mixin transition($speed) {
+    transition: getTransitionTime($speed);
+    transition-timing-function: ease;
+}
+
+html, body, html h1, html h2, html h3, html h4, html h5, html h6, html p, html span, html textarea, html input, body h1, body h2, body h3, body h4, body h5, body h6, body p, body span, body textarea, body input {
+    font-family: $font;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.align-stretch {
+    align-items: stretch;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.flex-grow { flex-grow: 1; }
+.flex-grow-dis { flex-grow: 0; }
+.flex-shrink { flex-shrink: 1; }
+.flex-shrink-dis { flex-shrink: 0; }
+
+.dir-rtl { direction: rtl; }
+.dir-ltr { direction: ltr; }
+
+.g-5 {gap: 5px;}
+.g-8 {gap: 8px;}
+.g-16 {gap: 16px;}
+.g-20 {gap: 20px;}
+.g-24 {gap: 24px;}
+
+.p-0-8 {padding: 0 8px;}
+.p-8 {padding: 8px;}
+
+.font-22 { font-size: 22px; }
+.width-fit { width: fit-content; }
+.full-width { width: 100%; }
+
+.x-stretch-pad{padding: 1rem 1.125rem;}
+.cursor-pointer { cursor: pointer; }
+
+.grid-form-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.no-border { border: none !important; }
+
+a {
+    text-decoration: none;
+}
+
+.brand-link {
+    color: $fontColor;
+    font-weight: bold;
+    font-size: setFont();
+}
+
+.widget-shadow {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}

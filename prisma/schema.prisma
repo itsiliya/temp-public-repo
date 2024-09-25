@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id                        Int                       @id @default(autoincrement())
+  name                      String
+  lastname                  String
+  homePhoneNumber           String
+  fatherPhoneNumber         String
+  motherPhoneNumber         String
+  emergencyPhoneNumber      String
+  class                     Class                     @relation(fields: [classId], references: [id])
+  classId                   Int
+  Absents                   Absent[]
+  Delaies                   Delay[]
+  DisciplinaryReports       DisciplinaryReport[]
+  ExtracurricularActivities ExtracurricularActivity[]
+}
+
+model Class {
+  id           Int       @id @default(autoincrement())
+  grade        Int
+  fieldOfStudy String
+  Students     Student[]
+}
+
+model Absent {
+  id         Int      @id @default(autoincrement())
+  date       DateTime
+  acceptable Boolean
+  reason     String?
+  student    Student  @relation(fields: [studentId], references: [id])
+  studentId  Int
+}
+
+model Delay {
+  id            Int      @id @default(autoincrement())
+  date          DateTime
+  amountOfDelay Int
+  acceptable    Boolean
+  reason        String?
+  student       Student  @relation(fields: [studentId], references: [id])
+  studentId     Int
+}
+
+model DisciplinaryReport {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  report    String
+  student   Student  @relation(fields: [studentId], references: [id])
+  studentId Int
+}
+
+model ExtracurricularActivity {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  activity  String
+  student   Student  @relation(fields: [studentId], references: [id])
+  studentId Int
+}
